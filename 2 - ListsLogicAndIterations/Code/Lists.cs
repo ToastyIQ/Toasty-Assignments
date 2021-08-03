@@ -7,27 +7,31 @@ namespace ListsLogicAndIterations.Code
 	{
 		public static List<decimal> BuildList(decimal first, decimal second)
 		{
-			throw new NotImplementedException();
+			List<decimal> ToastyListy = new List<decimal>();
+            ToastyListy.Add(first);
+			ToastyListy.Add(second);
+			return ToastyListy;
+        }
+
+		public static decimal GetValue(List<decimal> ToastyListy, int position)
+		{
+			if (position < 0 || position > ToastyListy.Count - 1) return 0;
+			else return ToastyListy[position];
+        }
+
+		public static void AddValue(List<decimal> ToastyListy, decimal value)
+		{
+			ToastyListy.Add(value);
 		}
 
-		public static decimal GetValue(List<decimal> list, int position)
+		public static void AddValue(List<decimal> ToastyListy, List<decimal> ToastyListyB)
 		{
-			throw new NotImplementedException();
+			ToastyListy.AddRange(ToastyListyB);
 		}
 
-		public static void AddValue(List<decimal> list, decimal value)
+		public static void RemoveValue(List<decimal> ToastyListy, decimal value)
 		{
-			throw new NotImplementedException();
-		}
-
-		public static void AddValue(List<decimal> list, List<decimal> value)
-		{
-			throw new NotImplementedException();
-		}
-
-		public static void RemoveValue(List<decimal> list, decimal value)
-		{
-			throw new NotImplementedException();
+			if (ToastyListy.Contains(value)) ToastyListy.Remove(value);
 		}
 	}
 }

@@ -8,6 +8,7 @@ namespace ListsLogicAndIterations.Code
 		public static Dictionary<Guid, decimal> Build(Guid key, decimal value)
         {
 			Dictionary<Guid, decimal> dict = new Dictionary<Guid, decimal>();
+            dict.Add(key, value);
             return dict;
         }
 
