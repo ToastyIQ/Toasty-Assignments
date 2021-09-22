@@ -8,6 +8,12 @@ namespace AnimalShelter.Code
     {
         public AddAnimal()
         {
+            //
+            // verify animal is supported
+            // generate uniqueAnimalId (guid)
+            // store guid and animal type ... somewhere. Maybe dictionary
+            //
+
             throw new NotImplementedException();
         }
 
