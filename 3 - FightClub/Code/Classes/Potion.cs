@@ -8,18 +8,23 @@ namespace FightClub.Code
 {
     class Potion : IPotion
     {
-        public int Healing { get; set; }
-        public PotionType Type { get; set; }
+        public int Healing => (Type == PotionType.Greater) ? 5 : 2;
+        public PotionType Type { get => _type; }
+
+        private PotionType _type;
         public Potion()
         {
-            Healing = 2;
-            Type = PotionType.Basic;
+            _type = PotionType.Basic;
+        }
+
+        public Potion(PotionType potionType)
+        {
+            SetType(potionType);
         }
 
         public void SetType(PotionType potionType)
         {
-            Type = potionType;
-            Healing = (Type == PotionType.Greater) ? 5 : 2;
+            _type = potionType;
         }
     }
 }

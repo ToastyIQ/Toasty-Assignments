@@ -18,7 +18,7 @@ namespace ObjectOrientedProblems.Code
 
         public static IFighter HireFighter()
 		{
-			return new Fighter();
+			return new Fighter(10, 1, Enums.FighterState.Healthy);
 		}
 	}
 }
