@@ -1,33 +1,60 @@
-﻿using System;
+﻿using AnimalShelter.Code.ResponseLogic;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AnimalShelter.Code
 {
     public class AnimalShelter
     {
-        public AddAnimal()
-        {
-            //
-            // verify animal is supported
-            // generate uniqueAnimalId (guid)
-            // store guid and animal type ... somewhere. Maybe dictionary
-            //
+        public List<Animal> shelterList = new List<Animal>();
+        public bool isAdded = false;
+        string responseMessage;
 
+        public Animal AddAnimal (Animal animal)
+        {
+
+            //*This function will return a result object with the following properties:
+            //*Property: If the animal was added to the shelter(true / false)
+            //*Property: The animal object that was added to the shelter(NULL if not added)
+            //*Property: String error message for reasons the animal was not added
+            //    * Example error messages
+            //       * Animal was not a supported animal
+            //       * Anything else you can think of that you think the system should validate against
+
+            ///string responseMessage;
+            ///
+
+            var addAnimalResult = new GenerateAnimalResponse();
+
+            if (animal.IsSupported)
+            {
+                isAdded = true;
+                shelterList.Add(animal);
+                return addAnimalResult;
+            }
+            else
+            {
+                responseMessage = "${animal} is not a supported animal and has not been added to the shelter";
+            }
+
+        }
+
+        public void GetAnimal()
+        {
+            // 
             throw new NotImplementedException();
         }
 
-        public GetAnimal()
+        public void FindAnimal()
         {
             throw new NotImplementedException();
         }
 
-        public FindAnimal()
+        public void FindAnimalById()
         {
             throw new NotImplementedException();
         }
-
-        public FindAnimalById()
+        public GenerateAnimalResponse AnimalResponse()
         {
             throw new NotImplementedException();
         }
