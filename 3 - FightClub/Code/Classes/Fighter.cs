@@ -8,17 +8,25 @@ namespace FightClub.Code
 {
     class Fighter : IFighter 
     {
-        public int Health { get; set; }
-        public int Damage { get; set; }
-        public FighterState State { get; set; }
+        public int Health { get => _health; }
+        public int Damage { get; private set; }
+        public FighterState State { get; private set; }
 
         public Fighter()
         {
-            Health = 10;
+            _health = 10;
             Damage = 1;
             State = FighterState.Healthy;
         }
 
+        public Fighter(int health, int damage, FighterState state) 
+        {
+            _health = health;
+            State = state;
+            Damage = damage; 
+        }
+
+        private int _health;
         public void DrinkPotion(IPotion potion)
         {
             /*
@@ -27,32 +35,16 @@ namespace FightClub.Code
             Health >= 10 ? Health = 10 : Health += potion.Healing;
             */
 
-            if (Health != 0)
+            if (_health != 0)
             {
-                Health += potion.Healing;
+                _health += potion.Healing;
             }
-            if (Health >= 10)
+            if (_health >= 10)
             {
-                Health = 10;
+                _health = 10;
             }
 
-
-            if (Health >= 10)
-            { 
-                State = FighterState.Healthy; 
-            }
-            else if (Health >= 2)
-            { 
-                State = FighterState.Hurt; 
-            }
-            else if (Health == 1)
-            { 
-                State = FighterState.KnockedOut; 
-            }
-            else if (Health == 0)
-            { 
-                State = FighterState.Dead; 
-            }
+            SetState();
         }
 
         public void PowerUp(IPowerUp powerUp)
@@ -70,25 +62,30 @@ namespace FightClub.Code
 
         public void TakeDamage(IFighter fighter)
         {
-            if (Health > 0)
+            if (_health > 0)
             {
-                Health -= fighter.Damage;
-                if (Health >= 10)
-                {
-                    State = FighterState.Healthy;
-                }
-                else if (Health >= 2)
-                {
-                    State = FighterState.Hurt;
-                }
-                else if (Health == 1)
-                {
-                    State = FighterState.KnockedOut;
-                }
-                else if (Health == 0)
-                {
-                    State = FighterState.Dead;
-                }
+                _health -= fighter.Damage;
+                SetState();
+            }
+        }
+
+        private void SetState()
+        {
+            if (_health >= 10)
+            {
+                State = FighterState.Healthy;
+            }
+            else if (_health >= 2)
+            {
+                State = FighterState.Hurt;
+            }
+            else if (_health == 1)
+            {
+                State = FighterState.KnockedOut;
+            }
+            else if (_health == 0)
+            {
+                State = FighterState.Dead;
             }
         }
     }
