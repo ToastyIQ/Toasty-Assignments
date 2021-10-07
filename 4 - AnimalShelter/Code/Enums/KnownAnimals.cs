@@ -4,10 +4,13 @@ using System.Text;
 
 namespace AnimalShelter.Code.Enums
 {
-    public enum NotSupportedAnimals
+    public enum KnownAnimals
     {
-        NotSet,
         Deer,
-        Bear
+        Bear,
+        Cat,
+        Dog,
+        Bird,
+        Snake
     }
 }
