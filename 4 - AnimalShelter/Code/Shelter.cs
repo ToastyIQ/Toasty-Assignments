@@ -100,7 +100,7 @@ namespace AnimalShelter.Code
                 status = true;
             }
 
-            
+
             var animalIdSearchResult = new Response(animal, status, errorMessage);
             return animalIdSearchResult;
         }
