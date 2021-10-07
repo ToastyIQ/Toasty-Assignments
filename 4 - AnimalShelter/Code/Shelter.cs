@@ -88,7 +88,7 @@ namespace AnimalShelter.Code
             string errorMessage = "";
             Animal animal = null;
 
-            Animal animalResult = (Animal)shelterAnimals.Where(animal => animal.Species.Equals(idToFind));
+            Animal animalResult = (Animal)shelterAnimals.Where(animal => animal.UniqueAnimalId.Equals(idToFind));
 
             if (animalResult == null)
             {
