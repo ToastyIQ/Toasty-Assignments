@@ -7,7 +7,7 @@ namespace AnimalShelter.Code.Interfaces
     interface IAnimal
     {
         public Guid UniqueAnimalId { get; }
-        public string PotentialAnimal { get; }
+        public string Species { get; }
         public bool CanFly { get; }
         public bool IsSupported { get; }
 

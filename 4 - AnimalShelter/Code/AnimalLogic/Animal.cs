@@ -1,32 +1,41 @@
-﻿using AnimalShelter.Code.Interfaces;
-using AnimalShelter.Code.Enums;
+﻿using AnimalShelter.Code.Enums;
+using AnimalShelter.Code.Interfaces;
 using System;
 
 
 
 namespace AnimalShelter.Code
 {
-    public abstract class Animal : IAnimal
+    public class Animal : IAnimal
     {
-        public string PotentialAnimal { get; protected set; }
-        public Guid UniqueAnimalId { get; private set; } = Guid.NewGuid();
-        public bool IsSupported { get; protected set; }
-        public bool CanFly { get; protected set; }
-        
+        public string Species { get; }
+        public Guid UniqueAnimalId { get;  } = Guid.NewGuid();
+        public bool IsSupported { get { return DetermineIfSupported(); } }
+        public bool CanFly { get { return DetermineIfCanFly(); } }
 
-        public bool DetermineIfSupported(bool isSupported)
+        public Animal(string species)
         {
-            IsSupported = isSupported;
-
-            if (Enum.IsDefined(typeof(SupportedAnimals), PotentialAnimal))
-            {
-                isSupported = true;
-            }
-
-            return isSupported; // remove later, obvs
+            Species = species;
         }
-                
-        public abstract bool DetermineIfCanFly();
 
+        public bool DetermineIfSupported()
+        {
+            if (Enum.IsDefined(typeof(SupportedAnimals), Species))
+                {
+                    return true;
+                }
+            return false;
+        }
+
+        public bool DetermineIfCanFly()
+        {
+            KnownAnimals potentialAnimals = (KnownAnimals)Enum.Parse(typeof(KnownAnimals), Species);
+
+            if (potentialAnimals.Equals(KnownAnimals.Bird))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
