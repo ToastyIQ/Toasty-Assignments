@@ -21,14 +21,12 @@ namespace AnimalShelter.Code
                 shelterAnimals.Add(animal);
                 status = true;
             }
-
             else
             {
                 errorMessage = "This animal is not supported";
             }
 
             var addAnimalResult = new Response(animal, status, errorMessage);
-
             return addAnimalResult;
 
         }
@@ -77,9 +75,9 @@ namespace AnimalShelter.Code
             }
 
             var removeAnimalResult = new Response(animal, status, errorMessage);
+            
             return removeAnimalResult;
 
-            throw new NotImplementedException();
         }
 
         public Response FindAnimalById(Guid idToFind)
@@ -88,7 +86,7 @@ namespace AnimalShelter.Code
             string errorMessage = "";
             Animal animal = null;
 
-            Animal animalResult = (Animal)shelterAnimals.Where(animal => animal.UniqueAnimalId.Equals(idToFind));
+            Animal animalResult = shelterAnimals.SingleOrDefault(animal => animal.UniqueAnimalId.Equals(idToFind));
 
             if (animalResult == null)
             {
@@ -100,7 +98,7 @@ namespace AnimalShelter.Code
                 status = true;
             }
 
-            
+
             var animalIdSearchResult = new Response(animal, status, errorMessage);
             return animalIdSearchResult;
         }
