@@ -18,8 +18,8 @@ namespace RPG.Tests
             int heightInInches = 69;
 
             ///Act
-            var builder = new Builder();
-            CharacterAttributes attributes1 = builder.CreateAttributes(headRoundness, fitnessLevel, heightInInches);
+   
+            CharacterAttributes attributes1 = new CharacterAttributes(headRoundness, fitnessLevel, heightInInches);
 
             ///Assert
 
@@ -38,11 +38,9 @@ namespace RPG.Tests
             string fitnessLevel = "NotFit";
             int heightInInches = 69;
 
-            var builder = new Builder();
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterAttributes(headRoundness, fitnessLevel, heightInInches));
 
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateAttributes(headRoundness, fitnessLevel, heightInInches));
-
-            Assert.AreEqual("Head Roundness must be a value of 0 - 100", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Head Roundness must be a value of 0 - 100)", exception.Message);
         }
 
         [TestMethod]
@@ -50,13 +48,11 @@ namespace RPG.Tests
         {
             int headRoundness = 69;
             string fitnessLevel = "NotVeryFit";
-            int heightInInches = 69;
+            int heightInInches = 69;            
 
-            var builder = new Builder();
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterAttributes(headRoundness, fitnessLevel, heightInInches));
 
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateAttributes(headRoundness, fitnessLevel, heightInInches));
-
-            Assert.AreEqual("This is not a valid fitness level.", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (This is not a valid fitness level.)", exception.Message);
         }
 
         [TestMethod]
@@ -66,11 +62,9 @@ namespace RPG.Tests
             string fitnessLevel = "NotFit";
             int heightInInches = -69;
 
-            var builder = new Builder();
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterAttributes(headRoundness, fitnessLevel, heightInInches));
 
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateAttributes(headRoundness, fitnessLevel, heightInInches));
-
-            Assert.AreEqual("Height must be a postive number", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Height must be a postive number.)", exception.Message);
         }
     }
 }
