@@ -21,11 +21,11 @@ namespace RPG.Code
             {
                 exceptions.Add(new ArgumentException("Head Roundness must be a value of 0 - 100"));
             }
-            else if (!Enum.IsDefined(typeof(FitnessLevels), fitnessLevel))
+            if (!Enum.IsDefined(typeof(FitnessLevels), fitnessLevel))
             {
                 exceptions.Add(new ArgumentException("This is not a valid fitness level."));
             }
-            else if (heightInInches < 0)
+            if (heightInInches < 0)
             {
                 exceptions.Add(new ArgumentException("Height must be a postive number."));
             }

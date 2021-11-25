@@ -21,23 +21,23 @@ namespace RPG.Code
             {
                 exceptions.Add(new ArgumentException("Intelligence must be 5 - 20"));
             }
-            else if (wisdom < 5 || wisdom > 20)
+            if (wisdom < 5 || wisdom > 20)
             {
                 exceptions.Add(new ArgumentException("Wisdom must be 5 - 20"));
             }
-            else if (dexterity < 1 || dexterity > 20)
+            if (dexterity < 1 || dexterity > 20)
             {
                 exceptions.Add(new ArgumentException("Dexterity must be 1 - 20"));
             }
-            else if (strength < 1 || strength > 20)
+            if (strength < 1 || strength > 20)
             {
                 exceptions.Add(new ArgumentException("Strength must be 1 - 20"));
             }
-            else if (charisma < 0 || charisma > 20)
+            if (charisma < 0 || charisma > 20)
             {
                 exceptions.Add(new ArgumentException("Charisma must be 0 - 20"));
             }
-            else if (constitution < 10 || constitution > 20)
+            if (constitution < 10 || constitution > 20)
             {
                 exceptions.Add(new ArgumentException("Constitution must be 10 - 20"));
             }
@@ -50,7 +50,6 @@ namespace RPG.Code
             {
                 throw new AggregateException("One or more errors have been encountered", exceptions);
             }
-
 
             Intelligence = intelligence;
             Wisdom = wisdom;

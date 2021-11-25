@@ -4,7 +4,7 @@ namespace RPG.Code
     public class Character
     {
         public CharacterAttributes Attributes { get; }
-        public CharacterStats Stats { get; set; }
+        public CharacterStats Stats { get; private set; }
 
         public Character(CharacterAttributes attributes, CharacterStats stats)
         {
@@ -12,10 +12,9 @@ namespace RPG.Code
             Stats = stats;
         }
 
-        public Character RespecCharacter(Character character, int intelligence, int wisdom, int dexterity, int strength, int charisma, int constitution)
+        public void RespecCharacter(CharacterStats stats)
         {
-            character.Stats = new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution);
-            return character;
+            Stats = stats;
         }
 
     }   

@@ -44,7 +44,7 @@ namespace RPG.Tests
         }
 
         [TestMethod]
-        public void AttributeTest_InvalidFitnessRoundess()
+        public void AttributeTest_InvalidFitness()
         {
             int headRoundness = 69;
             string fitnessLevel = "NotVeryFit";
