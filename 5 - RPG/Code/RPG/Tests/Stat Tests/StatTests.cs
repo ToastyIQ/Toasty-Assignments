@@ -20,8 +20,7 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            CharacterStats stats1 = builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution);
+            CharacterStats stats1 = new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution);
 
             ///Assert
 
@@ -46,13 +45,14 @@ namespace RPG.Tests
             int charisma = 10;
             int constitution = 10;
 
-            ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+            ///Act            
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Intelligence must be 5 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Intelligence must be 5 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
+
         }
 
         [TestMethod]
@@ -67,13 +67,14 @@ namespace RPG.Tests
             int charisma = 10;
             int constitution = 10;
 
-            ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+            ///Act            
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Intelligence must be 5 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Intelligence must be 5 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
+
         }
 
         [TestMethod]
@@ -88,13 +89,13 @@ namespace RPG.Tests
             int charisma = 10;
             int constitution = 10;
 
-            ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+            ///Act            
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Wisdom must be 5 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Wisdom must be 5 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -108,14 +109,13 @@ namespace RPG.Tests
             int strength = 10;
             int charisma = 10;
             int constitution = 10;
+            ///Act            
 
-            ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Wisdom must be 5 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Wisdom must be 5 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -131,12 +131,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+            
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Dexterity must be 1 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Dexterity must be 1 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -152,12 +152,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Dexterity must be 1 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Dexterity must be 1 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -173,12 +173,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Strength must be 1 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Strength must be 1 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -194,12 +194,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Strength must be 1 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Strength must be 1 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -215,12 +215,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Charisma must be 0 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Charisma must be 0 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -236,12 +236,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Charisma must be 0 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Charisma must be 0 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -257,12 +257,12 @@ namespace RPG.Tests
             int constitution = 69;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Constitution must be 10 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Constitution must be 10 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -278,12 +278,12 @@ namespace RPG.Tests
             int constitution = 9;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("Constitution must be 10 - 20", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (Constitution must be 10 - 20) (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -297,14 +297,13 @@ namespace RPG.Tests
             int strength = 12;
             int charisma = 11;
             int constitution = 12;
-
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
 
         [TestMethod]
@@ -320,12 +319,12 @@ namespace RPG.Tests
             int constitution = 10;
 
             ///Act
-            var builder = new Builder();
-            var exception = Assert.ThrowsException<ArgumentException>(() => builder.CreateStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
+
+            var exception = Assert.ThrowsException<AggregateException>(() => new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution));
 
             ///Assert
 
-            Assert.AreEqual("The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60", exception.Message);
+            Assert.AreEqual("One or more errors have been encountered (The sum of intelligence, wisdom, dexterity, strength, charisma, and constitution must be equal to 60)", exception.Message);
         }
     }
 }
