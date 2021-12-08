@@ -21,7 +21,7 @@ public class CharacterPersistence
         return jsonCharacter;
     }
 
-    public static string DeserializedCharacterFile(string path)
+    public static string GetCharacterJSONFile(string path)
     {
         string deserializedCharacter = File.ReadAllText(path);
         return deserializedCharacter;

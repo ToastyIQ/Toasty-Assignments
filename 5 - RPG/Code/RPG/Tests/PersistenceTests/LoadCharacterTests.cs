@@ -40,7 +40,7 @@ namespace RPG.Tests
             Character character = new Character(name, attributes1, stats1);
             string serializedCharacter = CharacterPersistence.SerializeCharacter(character);
             CharacterPersistence.SaveCharacter(character, path);
-            string deserializedCharacter = CharacterPersistence.DeserializedCharacterFile(path);
+            string deserializedCharacter = CharacterPersistence.GetCharacterJSONFile(path);
 
             ///Assert
 
@@ -80,7 +80,7 @@ namespace RPG.Tests
             Character character = new Character(name, attributes1, stats1);
             string serializedCharacter = CharacterPersistence.SerializeCharacter(character);
             CharacterPersistence.SaveCharacter(character, path);
-            string deserializedCharacter = CharacterPersistence.DeserializedCharacterFile(path);
+            string deserializedCharacter = CharacterPersistence.GetCharacterJSONFile(path);
             Character loadCharacter = CharacterPersistence.LoadCharacter(deserializedCharacter);
 
             ///Assert
@@ -110,7 +110,7 @@ namespace RPG.Tests
 
             ///Act
 
-            string deserializedCharacter = CharacterPersistence.DeserializedCharacterFile(path);            
+            string deserializedCharacter = CharacterPersistence.GetCharacterJSONFile(path);            
             var exception = Assert.ThrowsException<AggregateException>(() => CharacterPersistence.LoadCharacter(deserializedCharacter));
 
             ///Assert
@@ -128,7 +128,7 @@ namespace RPG.Tests
 
             ///Act
 
-            string deserializedCharacter = CharacterPersistence.DeserializedCharacterFile(path);
+            string deserializedCharacter = CharacterPersistence.GetCharacterJSONFile(path);
             var exception = Assert.ThrowsException<AggregateException>(() => CharacterPersistence.LoadCharacter(deserializedCharacter));
 
             ///Assert
@@ -147,7 +147,7 @@ namespace RPG.Tests
 
             ///Act
 
-            string deserializedCharacter = CharacterPersistence.DeserializedCharacterFile(path);
+            string deserializedCharacter = CharacterPersistence.GetCharacterJSONFile(path);
             var exception = Assert.ThrowsException<JsonReaderException>(() => CharacterPersistence.LoadCharacter(deserializedCharacter));
 
             ///Assert
