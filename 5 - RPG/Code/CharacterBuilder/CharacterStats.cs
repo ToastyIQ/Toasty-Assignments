@@ -57,6 +57,8 @@ namespace RPG.Code
             Strength = strength;
             Charisma = charisma;
             Constitution = constitution;
+
+            
         }
     }
 }

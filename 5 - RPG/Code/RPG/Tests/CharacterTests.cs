@@ -12,6 +12,8 @@ namespace RPG.Tests
         {
             ///Arrange
 
+            string name = "Billy";
+            
             int headRoundness = 69;
             string fittnessLevel = "NotFit";
             int heightInInches = 69;
@@ -27,10 +29,11 @@ namespace RPG.Tests
 
             CharacterAttributes attributes1 = new CharacterAttributes(headRoundness, fittnessLevel, heightInInches);
             CharacterStats stats1 = new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution);
-            Character character = new Character(attributes1, stats1);
+            Character character = new Character(name, attributes1, stats1);
 
             ///Assert
 
+            Assert.AreEqual("Billy", character.CharacterName);
             Assert.AreEqual(69, character.Attributes.HeadRoundness);
             Assert.AreEqual("NotFit", character.Attributes.FitnessLevel);
             Assert.AreEqual(69, character.Attributes.HeightInInches);
@@ -48,6 +51,8 @@ namespace RPG.Tests
         public void ReSpecCharacterTest_HappyPath()
         {
             ///Arrange
+            
+            string name = "Billy";
 
             int headRoundness = 69;
             string fittnessLevel = "NotFit";
@@ -71,13 +76,14 @@ namespace RPG.Tests
             CharacterAttributes attributes1 = new CharacterAttributes(headRoundness, fittnessLevel, heightInInches);
             CharacterStats stats1 = new CharacterStats(intelligence, wisdom, dexterity, strength, charisma, constitution);
             CharacterStats stats2 = new CharacterStats(intelligenceRespec, wisdomRespec, dexterityRespec, strengthRespec, charismaRespec, constitutionRespec);
-            Character playerCharacter = new Character(attributes1, stats1);
+            Character playerCharacter = new Character(name, attributes1, stats1);
             playerCharacter.RespecCharacter(stats2);
 
 
 
             ///Assert
 
+            Assert.AreEqual("Billy", playerCharacter.CharacterName);
             Assert.AreEqual(69, playerCharacter.Attributes.HeadRoundness);
             Assert.AreEqual("NotFit", playerCharacter.Attributes.FitnessLevel);
             Assert.AreEqual(69, playerCharacter.Attributes.HeightInInches);
